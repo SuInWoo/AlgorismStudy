@@ -1,4 +1,4 @@
-package group.g1004;
+package group.g1th;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package group.g1004;
+package group.g1th;
 
 public class PushTest {
     public static void main(String[] args) {
