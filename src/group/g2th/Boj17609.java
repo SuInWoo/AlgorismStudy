@@ -13,6 +13,7 @@ import java.io.InputStreamReader;
     풀이방법
     1. 시작과 끝을 기준으로 시작은++ 하면서 비교, 끝은 --하면서 비교
     2. 다른 값이 만나면 start == end - 1 / start++ == end 비교 후 없으면 2 출력
+    3. 반례 XYXYAAYXY 때문에 왼쪽 짜르는거, 오른쪽 짜르는거 경우 나누어서 품 -> 재귀 or while
  */
 
 /*
@@ -25,14 +26,14 @@ import java.io.InputStreamReader;
     aabab	    2
  */
 public class Boj17609 {
-    public int parse(String str, int start, int end , int cnt){
+    public int palindrome(String str, int start, int end , int cnt){
 
         if (cnt == 2) return 2;
 
         while (start < end){
             if (str.charAt(start) != str.charAt(end)){
-                int delS = parse(str, start+1, end, cnt+1);
-                int delE = parse(str, start, end-1, cnt+1);
+                int delS = palindrome(str, start+1, end, cnt+1);
+                int delE = palindrome(str, start, end-1, cnt+1);
                 cnt = Math.min(delS, delE);
                 break;
             }
@@ -54,7 +55,7 @@ public class Boj17609 {
 
         for (int i = 0; i < T; i++) {
             String s = str[i];
-            System.out.println(main.parse(s, 0, s.length()-1, 0));
+            System.out.println(main.palindrome(s, 0, s.length()-1, 0));
         }
     }
 }
