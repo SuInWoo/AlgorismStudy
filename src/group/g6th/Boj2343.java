@@ -22,7 +22,6 @@ public class Boj2343 {
 
         int start = 0;
         int end = 0;
-        int ans = 0;
         for (int i = 0; i < N; i++) {
             lecture[i] = Integer.parseInt(st.nextToken());
             if (start < lecture[i])
