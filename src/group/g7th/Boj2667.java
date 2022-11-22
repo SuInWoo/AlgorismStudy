@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class Boj2667 {
     public static int[] mx = new int[]{-1, 1, 0, 0};    // 좌, 우, 상 하
