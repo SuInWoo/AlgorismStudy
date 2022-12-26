@@ -23,6 +23,7 @@ public class FruitSeller {
 
         return ans;
     }
+
     public static void main(String[] args) {
         System.out.println(solution(4, 3, new int[]{4,1,2,2,4,4,4,4,1,2,4,2}));
     }
