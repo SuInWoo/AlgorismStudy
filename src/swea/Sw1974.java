@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Sw1959 {
+public class Sw1974 {
 
     public static boolean check(String[][] arr) {
 
