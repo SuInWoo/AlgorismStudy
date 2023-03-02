@@ -120,8 +120,6 @@ public class Boj17144_미세먼지안녕 {
         // 미세먼지가 들어있는 q 생성
         Queue<Integer> q = createQ();
 
-        // q에서 하나씩 꺼내서 4방향 확인
-
         while (!q.isEmpty()) {
             int sy = q.poll(); // 미세먼지 y, x
             int sx = q.poll();
