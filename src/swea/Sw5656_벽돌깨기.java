@@ -40,7 +40,8 @@ public class Sw5656_벽돌깨기 {
             pushBall = new ArrayList<>(); // str으로 받음
             repeatPerm(0, "");
 
-            aa: for (String s : pushBall) { // 경우의 수 하나씩 뽑기
+            aa:
+            for (String s : pushBall) { // 경우의 수 하나씩 뽑기
                 int[][] copyMap = new int[H][W]; // 복사 배열 만들기
                 deepCopy(copyMap); // 배열 복사
 
@@ -48,7 +49,7 @@ public class Sw5656_벽돌깨기 {
                 for (int i = 1; i < sArr.length; i++) { // 하나씩 꺼내서 확인
 
                     // 벽돌이 전체가 0이 되었으면 더 이상 실행하지 않아도 되니 결과값 0으로 바꿔주고 테스트 하나 종료
-                    if(extraCnt(copyMap) == 0) {
+                    if (extraCnt(copyMap) == 0) {
                         ans = 0;
                         break aa;
                     }
@@ -96,13 +97,13 @@ public class Sw5656_벽돌깨기 {
 
         for (int i = 0; i < W; i++) {
             for (int j = 0; j < H; j++) {
-                if(copyMap[j][i] > 0) { // 0이 아닌 부분은 stack에 넣기
+                if (copyMap[j][i] > 0) { // 0이 아닌 부분은 stack에 넣기
                     stack.push(copyMap[j][i]);
                     copyMap[j][i] = 0;
                 }
             }
 
-            int floorIdx = H-1;
+            int floorIdx = H - 1;
             while (!stack.isEmpty()) {
                 copyMap[floorIdx--][i] = stack.pop(); // 아래칸부터 채워주기
             }
