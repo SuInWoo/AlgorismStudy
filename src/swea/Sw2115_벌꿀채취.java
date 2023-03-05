@@ -39,7 +39,7 @@ public class Sw2115_벌꿀채취 {
             visited = new boolean[M];
             for (int y = 0; y < N; y++) {
                 for (int x = 0; x < N; x++) {
-                    // 시작점 + M이 범위를 벗어나면 안넣고 continue
+                    // 시작점 + M이 범위를 벗어나면 안넣고 break
                     if (x + M > N)
                         break;
 
