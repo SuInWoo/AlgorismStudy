@@ -7,6 +7,7 @@ import java.util.*;
 public class Boj16234_인구이동 {
 
     static int N, L, R, ans, sum;
+    static boolean flag;
     static int[][] map;
     static boolean[][] visited;
     static List<Nation> list;
@@ -27,7 +28,6 @@ public class Boj16234_인구이동 {
             }
         }
 
-        list = new ArrayList<>();
         movePopulation();
         System.out.println(ans);
     }
@@ -36,22 +36,20 @@ public class Boj16234_인구이동 {
 
         while (true) { // 인구이동이 없을 때 까지 반복
             visited = new boolean[N][N];
-            list = new ArrayList<>();
-
+            flag = false;
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < N; j++) {
                     if (!visited[i][j]) { // 방문 안했으면
                         bfs(i, j);
+                        if(flag) // 이동할 얘들이 있으면
+                            simulation();
                     }
                 }
             }
-
-            if(list.size() > 1)
+            if(!flag) // 이동할 얘들이 없으면
                 return;
 
-            simulation();
-
-            ans++; // 인구 이동이 있으면 횟수 추가
+            ans++; // 횟수 추가
 
         }
     }
@@ -70,12 +68,16 @@ public class Boj16234_인구이동 {
 
     static void bfs(int y, int x) {
         Queue<Nation> q = new ArrayDeque<>();
-        q.offer(new Nation(y, x)); // 초기 넣기
-        sum = 0;
+        list = new ArrayList<>(); // 인구 이동이 필요한 나라를 담음
+
+        Nation firstN = new Nation(y, x); // 초기 넣기
+        q.offer(firstN);
+        list.add(firstN);
+        visited[y][x] = true;
+        sum = map[y][x];
 
         while (!q.isEmpty()) {
             Nation cn = q.poll();
-            list.add(cn);
 
             for (int i = 0; i < 4; i++) {
                 int ny = cn.y + my[i]; // 다음 좌표
@@ -84,7 +86,7 @@ public class Boj16234_인구이동 {
                 if(ny < 0 || ny >= N || nx < 0 || nx >= N || visited[ny][nx])
                     continue;
 
-                int abs = Math.abs(map[cn.y][cn.x] - map[ny][nx]);
+                int abs = Math.abs(map[cn.y][cn.x] - map[ny][nx]); // 두 지역의 차이
 
                 if(abs < L || abs > R)
                     continue;
@@ -94,9 +96,9 @@ public class Boj16234_인구이동 {
                 q.offer(createN);
                 list.add(createN); // 인구이동할 목록에 추가
                 sum += map[ny][nx];
+                flag = true;
             }
         }
-
     }
 }
 
