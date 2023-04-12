@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 
 public class Boj17281_야구공 {
 
-    static int N, ans, innings;
+    static int N, ans;
     static int[][] score;
     static boolean[] visited;
     static int[] arr;
@@ -31,7 +31,11 @@ public class Boj17281_야구공 {
 
         // end input
 
-        perm(0);
+        arr[3] = 0;
+        visited[3] = true;
+
+        perm(1);
+        gameStart();
         System.out.println(ans);
     }
 
@@ -40,7 +44,7 @@ public class Boj17281_야구공 {
         int sum = 0;
 
         // 총 이닝 수만큼 반복
-        while (innings != N) {
+        for (int n = 0; n < N; n++) {
             // 총 deathCnt 만큼 반복
             int deathCnt = 3;
             int[] base = new int[3]; // 1루, 2루, 3루
@@ -49,7 +53,7 @@ public class Boj17281_야구공 {
                 int batter = arr[atBat % 9]; // 타자 꺼내고 타석 증가
                 atBat++;
 
-                int type = score[innings][batter]; // 현재 타자 상태
+                int type = score[n][batter]; // 현재 타자 상태
 
                 if (type == 0) { // 꺼낸 타자가 아웃이면
                     deathCnt--;
@@ -73,34 +77,25 @@ public class Boj17281_야구공 {
                     base = new int[3];
                 }
             }
-            innings++;
         }
 
         return sum;
     }
 
-    static void perm(int depth) {
-        if (depth == 9) {
-            System.out.println(Arrays.toString(arr));
+    static void perm(int batter) {
+        if (batter == 9) {
             ans = Math.max(ans, gameStart());
             return;
         }
 
-        for (int i = 1; i < 9; i++) {
-            if (visited[i]) // 이미 타석에 들어섰으면
+        for (int i = 0; i < 9; i++) { // 자리리번호
+            if (visited[i])
                 continue; // 넘어감
 
             visited[i] = true;
-            arr[depth] = i; // 그 타석에 선수 넣음
-
-            if (depth + 1 == 3)
-                perm(depth + 2);
-            else
-                perm(depth + 1);
-
+            arr[i] = batter;
+            perm(batter + 1);
             visited[i] = false;
         }
     }
-
-
 }
