@@ -26,5 +26,6 @@ public class Boj18110_solvedac {
         }
 
         System.out.println((int)Math.round(sum / cnt));
+
     }
 }
