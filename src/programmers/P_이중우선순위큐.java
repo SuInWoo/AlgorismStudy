@@ -19,7 +19,8 @@ class P_이중우선순위큐 {
                     max.add(num);
                     break;
                 case 'D':
-                    if (max.isEmpty()) break;
+                    if (max.isEmpty() || min.isEmpty())
+                        break;
                     if (num == 1) {
                         int del = max.poll();
                         min.remove(del);
