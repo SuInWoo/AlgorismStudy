@@ -15,10 +15,10 @@ class P_k진수에서소수개수구하기 {
     private String convertToK(int n, int k) {
         StringBuilder result = new StringBuilder();
         while (n > 0) {
-            result.insert(0, n % k);
+            result.append(n % k);
             n /= k;
         }
-        return result.toString();
+        return result.reverse().toString();
     }
 
     private int findPrimeNumbers(String number) {
