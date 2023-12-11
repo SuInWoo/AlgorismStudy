@@ -183,11 +183,7 @@ fabric.properties
 # Log file
 *.log
 
-<<<<<<< HEAD
 *.xml
-
-=======
->>>>>>> origin/main
 # BlueJ files
 *.ctxt
 
@@ -207,7 +203,6 @@ fabric.properties
 hs_err_pid*
 replay_pid*
 
-<<<<<<< HEAD
 ### Example user template template
 ### Example user template
 
@@ -216,6 +211,4 @@ replay_pid*
 *.iml
 out
 gen
-=======
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,intellij+all
->>>>>>> origin/main
