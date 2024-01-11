@@ -47,7 +47,7 @@ public class Boj1946_신입사원 {
         }
 
         @Override
-        public int compareTo(Person o) { // 내림차순 정렬
+        public int compareTo(Person o) { // 오름차순 정렬
 
             if (this.first == o.first) {
                 return this.second - o.second;
